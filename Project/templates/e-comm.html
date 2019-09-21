@@ -1,0 +1,101 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>
+            E-Commerce Website
+        </title>
+        <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='st1.css') }}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>-->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class='top-nav-bar'>
+            <div class="search-box">
+                <i class="fa fa-bars" id="menu-btn" onclick="openmenu()"></i>
+                <i class="fa fa-times" id="close-btn" onclick="closemenu()"></i>
+                <img src="{{ url_for('static', filename='images/amazon-logo.png') }}" class="logo">
+                <input type="text" class="form-control">
+                <span class="input-group-text">
+                    <i class="fa fa-search"></i>
+                </span>                
+            </div>
+            <div class="menu-bar">
+                <ul>
+                    <li>
+                        <a href="#"><i class="fa fa-shopping-basket"></i>cart</a>
+                    </li>
+                    <li> <a href="#">sign up</a></li>
+                    <li> <a href="#">log in</a></li>
+                </ul>
+            </div>
+        </div>
+        <section class="header">
+            <div class="side-menu" id="side-menu">
+                <ul>
+                    <li>on sale<i class="fa fa-angle-right"></i>
+                        <ul>
+                            <li>watch</li>
+                            <li>apple-macbook</li>
+                            <li>lenovo k6 note mobile</li>
+                            <li>mi tv</li>
+                        </ul>
+                    </li>
+                    <li>mobiles<i class="fa fa-angle-right"></i>
+                        <ul>
+                                <li>samsung s10+</li>
+                                <li>apple x</li>
+                                <li>honor note</li>
+                                <li>mi note5</li>
+                        </ul>
+                    
+                    </li>
+                    <li>computers<i class="fa fa-angle-right"></i>
+                        <ul>
+                                <li>hp-pavvilian</li>
+                                <li>dell</li>
+                                <li>acer</li>
+                                <li>mac-book</li>
+                        </ul>                    
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <script>
+            function openmenu()
+            {
+                document.getElementById("side-menu").style.display="block";
+                document.getElementById("menu-btn").style.display="none";
+                document.getElementById("close-btn").style.display="block";
+            }
+            function closemenu()
+            {
+                document.getElementById("side-menu").style.display="none";
+                document.getElementById("menu-btn").style.display="block";
+                document.getElementById("close-btn").style.display="none";
+            }
+        </script>
+        <table class="table1">
+                <font color='red'>YOUR FAVOURITE PRODUCTS</font>
+                
+                <tr>
+                    {%for i in l:%}
+                    <td>{{i[0]}}</td>
+                    {%endfor%}
+                </tr>
+                <tr>
+                    {%for i in l:%}
+                    <td>
+                            
+                            <img src="{{ url_for('static', filename='images/')+i[-1]}}" height="200" width="200">
+                            &nbsp<p><strike>price:{{i[1]}}$</strike></p>
+                            &nbsp  price:{{i[2]}}$
+                    </td>
+                    {%endfor%}
+                </tr>
+                
+        </table>
+    </body>
+</html>
